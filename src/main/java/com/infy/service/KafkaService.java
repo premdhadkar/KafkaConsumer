@@ -20,7 +20,7 @@ public class KafkaService {
 	@KafkaListener(topics = "${topic.name}", groupId = "${spring.kafka.consumer.group-id}")
 	public void consume(ConsumerRecord<String, Customer> record, Acknowledgment acknowledgment) {
 		Customer customer = record.value();
-		log.info("Consumed Successfully: "+ customer);
+		log.info("Consumed Successfully: "+ customer.toString());
 		if(acknowledgment != null) {
 			acknowledgment.acknowledge();
 			log.info("Acknowledgement Provided");
